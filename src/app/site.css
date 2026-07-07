@@ -723,6 +723,8 @@ header nav a:hover {
 .logo {
     display: block;
     height: calc(var(--header-height)*0.8);
+    width: auto;
+    object-fit: contain;
     -webkit-transform-origin: top left;
         -ms-transform-origin: top left;
             transform-origin: top left;
@@ -739,9 +741,9 @@ header nav a:hover {
 }
 
 .white-logo {
-    -webkit-transform: scale(2.6);
-        -ms-transform: scale(2.6);
-            transform: scale(2.6);
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
     /* -webkit-filter: invert(1) hue-rotate(180deg);
             filter: invert(1) hue-rotate(180deg); */
     /* filter: invert(1) hue-rotate(180deg) brightness(1.5); */

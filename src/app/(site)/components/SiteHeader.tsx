@@ -48,8 +48,8 @@ export function SiteHeader() {
             src="/media/logo/logo.png"
             className={`logo${scrolled ? "" : " white-logo"}`}
             alt="Company Logo"
-            width={180}
-            height={60}
+            width={472}
+            height={414}
             priority
           />
         </Link>
