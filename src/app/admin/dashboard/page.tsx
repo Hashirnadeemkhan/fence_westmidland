@@ -2,11 +2,19 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
 export default function AdminDashboard() {
   const [blogs, setBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" })
+    router.push("/admin/login")
+    router.refresh()
+  }
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -41,11 +49,20 @@ export default function AdminDashboard() {
     <div className="max-w-6xl mx-auto p-8 bg-white rounded-2xl shadow-lg mt-16">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mt-52">📝 Manage Blogs</h1>
-        <Link href="/admin/dashboard/add">
-          <Button className="bg-green-600 hover:bg-green-700 text-white">
-            ➕ Add New Blog
+        <div className="flex gap-3">
+          <Link href="/admin/dashboard/add">
+            <Button className="bg-green-600 hover:bg-green-700 text-white">
+              ➕ Add New Blog
+            </Button>
+          </Link>
+          <Button
+            variant="outline"
+            onClick={handleLogout}
+            className="border-gray-400 text-gray-700"
+          >
+            🔓 Logout
           </Button>
-        </Link>
+        </div>
       </div>
 
       {loading ? (
